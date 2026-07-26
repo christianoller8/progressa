@@ -1,59 +1,73 @@
 # Progressa
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.0.8.
+Personal web platform for learning English, built as an Angular learning and portfolio
+project. *Progressa* is Latin — the feminine participle of *progredior* (to advance): "the one
+who has moved forward". It also works as an umbrella brand: `Progressa English` today, other
+subjects later.
 
-## Development server
+> **Status:** early stage. The environment and application skeleton are in place. Feature
+> modules are being built layer by layer — see the roadmap below.
 
-To start a local development server, run:
+## Tech stack
 
-```bash
-ng serve
-```
+- **Angular 22** — standalone components, zoneless change detection, signals
+- **Angular Material** (Material 3) for UI
+- **Signals + services** for state (no external state library)
+- **Repository pattern** over local storage, so a real backend can be added later by swapping a
+  single class
+- **Transloco** for in-app language switching (Spanish / English)
+- **Vitest** (unit) and **Playwright** (e2e) for testing
+- Free, key-less external APIs: Free Dictionary API, Datamuse, Web Speech API
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+The architecture deliberately keeps the generic engine (layout, routing, quiz engine,
+persistence) decoupled from English-specific content, so the shell can be reused for future
+learning platforms.
 
-## Code scaffolding
+## Planned modules
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+| Module | Purpose |
+|---|---|
+| Vocabulary | Themed lists, cards, meaning and usage quizzes |
+| Grammar | Theory lessons plus exercises |
+| Reading | Texts with comprehension questions |
+| Listening | Browser-generated audio plus comprehension |
+| Speaking | Browser speech recognition for pronunciation |
+| Writing | Guided exercises with a rubric and model answer |
+| Progress | Stats and evolution per skill |
+| Settings | Interface language, light/dark theme, data reset |
 
-```bash
-ng generate component component-name
-```
+The reusable quiz engine is the technical core of the project.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Getting started
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+Requires **Node `^24.15.0`** (or a compatible version per Angular 22) and npm.
 
 ```bash
-ng e2e
+npm install
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Start the development server (defaults to `http://localhost:4200/`):
 
-## Additional Resources
+```bash
+npm start
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Build for production (artifacts in `dist/`):
+
+```bash
+npm run build
+```
+
+Run the unit tests:
+
+```bash
+npm test
+```
+
+## Contributing workflow
+
+This project follows **GitHub Flow**: `main` is always deployable, work happens on descriptive
+branches (`feature/...`, `fix/...`, `docs/...`), and changes are merged through pull requests.
+
+Commit messages follow **Conventional Commits** (`feat:`, `fix:`, `refactor:`, `docs:`,
+`test:`, `chore:`).
