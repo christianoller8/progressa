@@ -1,2 +1,20 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" opened>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/" routerLinkActive="active">Home</a>
+    </mat-nav-list>
+  </mat-sidenav>
 
-<router-outlet />
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <button matIconButton (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>{{ title() }}</span>
+      <button matIconButton (click)="toggleTheme()">
+        <mat-icon>{{ theme() === 'dark' ? 'light_mode' : 'dark_mode' }}</mat-icon>      </button>
+    </mat-toolbar>
+
+    <router-outlet />
+  </mat-sidenav-content>
+</mat-sidenav-container>
