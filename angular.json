@@ -30,7 +30,13 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles.scss"]
+            "styles": [
+              "@fontsource/roboto/latin-400.css",
+              "@fontsource/roboto/latin-500.css",
+              "@fontsource/roboto/latin-700.css",
+              "material-icons/iconfont/filled.css",
+              "src/styles.scss"
+            ]
           },
           "configurations": {
             "production": {
