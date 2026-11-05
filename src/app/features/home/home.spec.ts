@@ -19,4 +19,10 @@ describe('Home', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('renders the page heading', () => {
+    const heading = (fixture.nativeElement as HTMLElement).querySelector('h1');
+
+    expect(heading?.textContent).toContain('Welcome to Progressa');
+  });
 });

@@ -1,4 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { APP_NAME } from '../../core/app-name';
 
 @Component({
   selector: 'app-home',
@@ -7,5 +9,5 @@ import { Component, signal } from '@angular/core';
   styleUrl: './home.scss',
 })
 export class Home {
-  protected readonly title = signal('Bienvenido a la aplicación');
+  protected readonly title = `Welcome to ${APP_NAME}`;
 }

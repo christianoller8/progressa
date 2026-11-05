@@ -1,20 +1,51 @@
+<a class="skip-link" href="#main-content" (click)="skipToMainContent($event)">
+  Skip to main content
+</a>
+
+<header>
+  <mat-toolbar>
+    <button
+      matIconButton
+      type="button"
+      aria-label="Toggle navigation"
+      aria-controls="app-sidenav"
+      [attr.aria-expanded]="sidenav.opened"
+      (click)="sidenav.toggle()"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>{{ title }}</span>
+    <span class="spacer"></span>
+    <button
+      matIconButton
+      type="button"
+      [attr.aria-label]="theme.isDark() ? 'Switch to light theme' : 'Switch to dark theme'"
+      (click)="theme.toggle()"
+    >
+      <mat-icon>{{ theme.isDark() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+    </button>
+  </mat-toolbar>
+</header>
+
 <mat-sidenav-container>
-  <mat-sidenav #sidenav mode="side" opened>
-    <mat-nav-list>
-      <a mat-list-item routerLink="/" routerLinkActive="active">Home</a>
+  <mat-sidenav #sidenav id="app-sidenav" mode="side" opened>
+    <mat-nav-list aria-label="Main">
+      <a
+        mat-list-item
+        routerLink="/"
+        routerLinkActive
+        #homeLink="routerLinkActive"
+        [routerLinkActiveOptions]="{ exact: true }"
+        [activated]="homeLink.isActive"
+      >
+        Home
+      </a>
     </mat-nav-list>
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <mat-toolbar>
-      <button matIconButton (click)="sidenav.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span>{{ title() }}</span>
-      <button matIconButton (click)="toggleTheme()">
-        <mat-icon>{{ theme() === 'dark' ? 'light_mode' : 'dark_mode' }}</mat-icon>      </button>
-    </mat-toolbar>
-
-    <router-outlet />
+    <main #mainContent id="main-content" tabindex="-1">
+      <router-outlet />
+    </main>
   </mat-sidenav-content>
 </mat-sidenav-container>
